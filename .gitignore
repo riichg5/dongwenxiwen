@@ -1,0 +1,11 @@
+*.swp
+node_modules/
+build/
+.idea/
+config.json
+pm2_config.json
+shipitfile.js
+
+
+
+

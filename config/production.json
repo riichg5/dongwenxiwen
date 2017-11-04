@@ -1,0 +1,15 @@
+{
+  "databases" : {
+    "default" : {
+      "host": "127.0.0.1",
+      "port": 3306,
+      "name": "ranqi",
+      "username": "root",
+      "password": "cuit@2017*&(^K"
+    }
+  },
+  "token_validate_in_day": 3650,
+  "application" : {
+  },
+  "oauthLogin": "http://120.27.197.238/login"
+}

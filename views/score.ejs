@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>成绩信息</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link id="loadBefore" href="/css/styleApp.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="/js/jquery/jquery-2.1.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <% if(info.scoreInfos.length > 0) { %>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="widget navy-bg p-xl text-left">
+                        <h2>
+                            <strong><%= info['姓名'] %></strong>
+                        </h2>
+                        <ul class="list-unstyled m-t-md">
+                            <li>
+                                <label>学号:</label>
+                                <%= info['学号'] %>
+                            </li>
+                            <li>
+                                <label>性别:</label>
+                                <%= info['性别'] %>
+                            </li>
+                            <li>
+                                <label>所属系科:</label>
+                                <%= info['所属系科'] %>
+                            </li>
+                            <li>
+                                <label>专业全称:</label>
+                                <%= info['专业全称'] %>
+                            </li>
+                            <li>
+                                <label>专业简称:</label>
+                                <%= info['专业简称'] %>
+                            </li>
+                            <li>
+                                <label>班全名:</label>
+                                <%= info['班全名'] %>
+                            </li>
+                            <li>
+                                <label>班简名:</label>
+                                <%= info['班简名'] %>
+                            </li>
+                            <li>
+                                <label>总学时:</label>
+                                <%= info['summaryInfo']['总学时'] %>
+                            </li>
+                            <li>
+                                <label>总学分:</label>
+                                <%= info['summaryInfo']['总学分'] %>
+                            </li>
+                            <li>
+                                <label>实获学分:</label>
+                                <%= info['summaryInfo']['实获学分'] %>
+                            </li>
+                            <li>
+                                <label>学分绩点:</label>
+                                <%= info['summaryInfo']['学分绩点'] %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <% info.scoreInfos.forEach(function(info){ %>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="widget lazur-bg p-xl text-left">
+                            <ul class="list-unstyled m-t-md">
+                                 <% for(let key in info){ %>
+                                    <li>
+                                        <label><%= key %>:</label>
+                                        <%= info[key] %>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <div class="widget yellow-bg p-lg text-center">
+                <div class="m-b-md">
+                    <i class="fa fa-warning fa-4x"></i>
+
+                    <h1 class="m-xs">目前还没有任何成绩</h1>
+                </div>
+            </div>
+        <% } %>
+
+    </div>
+  </body>
+</html>

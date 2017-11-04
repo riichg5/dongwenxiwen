@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="content-type" content="text/html;charset=gbk" />
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="keywords" content="双一,翻版" />
+    <meta name="description" content="“双一流”是&amp;quot;211&amp;quot;&amp;quot;985&amp;quot;的翻版吗？大同小异呗，每次出这玩意，赶脚就变着花样编新词" />
+    <link rel="stylesheet" type="text/css" href="/css/common.1a9a8c1.css" />
+    <link rel="stylesheet" type="text/css" href="/css/aio.c7021ee.css" />
+    <link rel="stylesheet" type="text/css" href="/css/top-nav-bar.d434cb6.css" />
+</head>
+
+<body class="layout-center has-menu">
+    <div class="head-wrap">
+        <hr class="divider">
+        <header id="header" class="container">
+            <div id="search-box" class="search-box-new line">
+                <div class="search-block clearfix">
+                    <div class="search-cont clearfix">
+                        <a class="logo" href="/" title="百度知道"></a>
+                        <form action="/search" name="search-form" method="get" id="search-form-new" class="search-form">
+                            <input class="hdi" id="kw" maxlength="256" tabindex="1" size="46" name="word" value="" autocomplete="off" />
+                            <button alog-action="g-search-anwser" type="submit" id="search-btn" hidefocus="true" tabindex="2" class="btn-global">搜索答案</button>
+                            <a href="#" alog-action="g-i-ask" class="i-ask-link" id="ask-btn-new">我要提问</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="nav-menu-container" id="j-nav-menu-container">
+        <div class="nav-show-control">
+            <div class="nav-menu-layout">
+                <div class="nav-menu line">
+                    <div class="nav-menu-content container">
+                        <div class="content-box">
+                            <div class="menu-item menu-item-index">
+                                <a class="menu-title " href="/">首页</a>
+                            </div>
+                            <div class="menu-item-box">
+                                <div class="menu-item menu-item-cat">
+                                    <a class="menu-title " href="/list?fr=daohang" target="_blank">问题</a>
+                                    <div class="menu-content"></div>
+                                </div>
+                                <div class="menu-item menu-item-lanmu">
+                                    <a class="menu-title" href="javascript:;">精选<i class="menu-new"></i></a>
+                                    <div class="menu-content"></div>
+                                </div>
+                                <div class="menu-item menu-item-user">
+                                    <a class="menu-title" href="javascript:;">用户</a>
+                                    <div class="menu-content"></div>
+                                </div>
+                                <div class="menu-item menu-item-expert">
+                                    <a class="menu-title" href="javascript:;">特色</a>
+                                    <div class="menu-content"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="body" class="container">
+        <div class="layout-wrap">
+            <div id="top-nav-bar" class="top-nav-bar">
+                <div class="container2">
+                    <a class="toplogo" href="http://zhidao.baidu.com" title="百度知道"></a>
+                    <div class="topsearch">
+                        <form action="/search" name="search-nav-form" id="search-nav-form" method="get">
+                            <input class="hdi" id="nav-kw" maxlength="256" tabindex="1" size="46" name="word" value="" autocomplete="off" />
+                            <button alog-action="g-search-anwser" type="submit" id="search-btn-nav" hidefocus="true" tabindex="2" class="i-search-link">搜索答案</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div style="display:none">
+                <nav class="wgt-nav f-12" alog-group="qb-cate-nav">
+                    <a href="/">百度知道</a> &gt;
+                    <a href="/browse/83">教育/科学</a> &gt;
+                    <a href="/browse/192">院校信息</a>
+                </nav>
+            </div>
+
+            <section class="line qb-section">
+                <article class="grid qb-content" id="qb-content">
+                    <div class="wgt-ask accuse-response line mod-shadow " id="wgt-ask">
+                        <h1 accuse="qTitle">
+                            <i class="iknow-qb_home_icons i-status-being grid mr-10"></i>
+                            <span class="ask-title "><%=title %></span>
+                        </h1>
+                        <div class="line f-aid ask-info ff-arial" id="ask-info">
+                            <span class="grid-r ask-time">
+                                <ins class="share-area"></ins>
+                            </span>
+                            <!-- <a class="" alog-action="qb-ask-uname" rel="nofollow" href="/usercenter?uid=f4564069236f25705e791512" target="_blank"><%= bestAnswer.nickName %></a> -->
+                            <!-- <span id="v-times" class="f-pipe" style="display: none"></span> -->
+                            <!-- <span class="f-pipe"></span> -->
+                            <span>发布于<%= created_at %></span>
+                            <ins class="accuse-area"></ins>
+                        </div>
+                    </div>
+                    <div class="wgt-best mod-shadow  " id="best-answer-2824429761">
+                        <div class="hd line ">
+                            <span class="grid-r f-aid pos-time answer-time f-pening"><%= bestAnswer ? bestAnswer.nickName : ''%> &nbsp;&nbsp;|&nbsp;&nbsp; 发布于<%= bestAnswer ? bestAnswer.created : ''%></span>
+                            <div id="act-link-banner-wp" class="grid-r"></div>
+                            <span class="iknow-qb_home_icons answer-type answer-best grid"></span>
+                            <span class="answer-title h2 grid">最佳答案</span>
+                        </div>
+                        <div class="bd answer" id="answer-2824429761">
+                            <div class="line info f-aid">
+                            </div>
+                            <div class="line content">
+                                <div id="best-content-2824429761" accuse="aContent" class="best-text mb-10" style="min-height: 55px;">
+                                    <p>
+                                        <%= bestAnswer ? bestAnswer.content : ''%>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wgt-answers has-other" id="wgt-answers">
+                        <div class="hd line other-hd ">
+                            <h2>其他回答</h2>
+                        </div>
+                        <div class="bd-wrap">
+                            <%
+                                for(let item of content) {
+                            %>
+                                <div class="bd answer answer-first answer-last answer-fold">
+                                    <div class="line">
+                                        <div class="line content">
+                                            <div id="answer-content-2824429879" accuse="aContent" class="answer-text line">
+                                                <span class="con">
+    												<%= item.content %>
+    											</span>
+                                            </div>
+                                            <div class="line info f-light-gray mt-10 mb-5 f-12">
+                                                <div class="grid pt-5">
+                                                    <span><%= item.nickName %></span>
+                                                    <span class="f-pipe">|</span>
+                                                    <span class="pos-time">发布于<%= item.created %></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="wgt-push mod-shadow last ">
+                        <h2 class="hd line"><i class="iknow-qb_home_icons"></i><%= product_name %>的其他问题：</h2>
+                        <ul alog-group="qb-push-que" class="bd list-34 line push-ul">
+                            <li>
+                                <span class="grid-r f-aid ff-arial">2回答</span>
+                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/204639791655102605.html?push=&group=0&qbl=push_question_0&rpRecommand=c&entry=qb_qb_view" target="_blank">汉朝的领土到底包不包括岭南？</a>
+                            </li>
+                            <li>
+                                <span class="grid-r f-aid ff-arial">13回答</span>
+                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/1707717304402421780.html?push=&group=0&qbl=push_question_1&rpRecommand=c&entry=qb_qb_view" target="_blank">想要出国，但家里没有足够的钱，我该怎么办？</a>
+                            </li>
+                            <li>
+                                <span class="grid-r f-aid ff-arial">13回答</span>
+                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/942130453048614772.html?push=&group=0&qbl=push_question_2&rpRecommand=c&entry=qb_qb_view" target="_blank">关于被小三这件事，你们怎么看？</a>
+                            </li>
+                            <li>
+                                <span class="grid-r f-aid ff-arial">11回答</span>
+                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/923957485998725779.html?push=&group=0&qbl=push_question_3&rpRecommand=c&entry=qb_qb_view" target="_blank">中国有哪些不能乱闯的旅游禁区？说说你知道的</a>
+                            </li>
+                            <li>
+                                <span class="grid-r f-aid ff-arial">3回答</span>
+                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/1673801713416306307.html?push=&group=0&qbl=push_question_4&rpRecommand=c&entry=qb_qb_view" target="_blank">美国独霸天下，是从二战结束后就开始了，还是苏联解体后才开...</a>
+                            </li>
+                        </ul>
+                        <div class="ft line more-push clearfix">
+                            <a alog-action="qb-push-more" log="pms:newqb,pos:pushlist,page:question" target="_blank" rel="nofollow" href="/browse/?qbl=push_question_more">更多等待您来回答的问题<span class="ff-arial">&nbsp;&gt;</span></a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <aside class="grid-r qb-side" id="qb-side">
+                    <div></div>
+                    <div class="mod-noshadow">
+                        <div class="cms-inner">
+                            <p class="cms-link-title">商品信息</p>
+                            <a rel="nofollow" href="https://item.jd.com/<%= product_id %>.html" target="_blank">
+                                <img src="<%= img_path %>" style="display: block; margin-left: 70px;">
+                            </a>
+                            <a class="btn-l-green" href="https://item.jd.com/<%= product_id %>.html" style="margin-top: 10px; margin-bottom: 10px; margin-left: 70px;">前往京东</a>
+                        </div>
+                    </div>
+                    <div class="qbside-top-line"></div>
+                    <div class="wgt-nologin-daily" id="wgt-nologin-daily">
+                        <div class="wgt-daily mod-shadow">
+                            <div class="daily-line mb-10 pt-10">
+                                <h3 class="grid">知道日报</h3>
+                                <span class="grid"></span>
+                                <a href="http://zhidao.baidu.com/daily/square/" target="_blank" alog-action="qb-daily-review" class="grid-r f-aid f-yahei">全部文章</a>
+                            </div>
+                            <div id="daily-carousel"></div>
+                            <div class="wgt-daily-wall"><em></em>
+                                <s></s>
+                            </div>
+                        </div>
+                        <div class="qbside-top-line"></div>
+                    </div>
+
+                    <div class="cms-slide mod-noshadow">
+                        <div class="cms-inner">
+                            <p class="cms-link-title">精彩知识在知道</p>
+                            <ul class="pb-5 mt-5" id="cms-link">
+                                <li><a alog-action="qb-inner-link" href="https://zhidao.baidu.com/culture/index?fr=daohang" target="_blank">快看，旮旯里有什么！</a></li>
+                                <li><a alog-action="qb-inner-link" href="http://zhidao.baidu.com/bigdata/list" target="_blank">知道大数据，用数据解读生活点滴</a></li>
+                                <li><a alog-action="qb-inner-link" href="https://zhidao.baidu.com/liuyan" target="_blank">【真相问答机】，揭穿流言！</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+
+            <div style="margin: 30px 0;width: 960px;height:90px;">
+                广告
+            </div>
+        </div>
+    </div>
+    <div class="wgt-footer-new">
+        <div class="footer-wp">
+            <ul class="footer-list clearfix">
+                <li class="footer-list-item footer-list-guide">
+                    <div class="footer-title"><span class="icon-guide"></span>新手帮助</div>
+                    <ul class="footer-link clearfix">
+                        <li><a href="http://help.baidu.com/question?prod_en=zhidao&class=241&id=1521" target="_blank">如何答题</a></li>
+                        <li><a href="http://help.baidu.com/question?prod_id=9&class=531" target="_blank">获取采纳</a></li>
+                        <li><a href="http://help.baidu.com/question?prod_en=zhidao&class=531" target="_blank">使用财富值</a></li>
+                    </ul>
+                </li>
+                <li class="footer-list-item footer-list-intro">
+                    <div class="footer-title"><span class="icon-intro"></span>玩法介绍</div>
+                    <ul class="footer-link clearfix">
+                        <li><a href="/shop" target="_blank">知道商城</a></li>
+                        <li><a href="http://zhidao.baidu.com/pcs/zhimatuan/index.html" target="_blank">知道团队</a></li>
+                        <li><a href="/hangjia" target="_blank">行家认证</a></li>
+                        <li><a href="http://zhidao.baidu.com/s/hi-quality/index.html" target="_blank">高质量问答</a></li>
+                    </ul>
+                </li>
+                <li class="footer-list-item footer-list-sug">
+                    <div class="user-tip" id="js-footer-user-tip" style="display: none;">
+                        <p class="title">您的帐号状态正常</p>
+                        <p class="desc">感谢您对我们的支持</p>
+                    </div>
+                    <div class="footer-title"><span class="icon-sug"></span>投诉建议</div>
+                    <ul class="footer-link clearfix">
+                        <li><a href="/misc/feedback" log="module:common,action:click,area:footer_feedback" target="_blank">意见反馈</a></li>
+                        <li><a href="/misc/appeal" log="module:common,action:click,area:footer_appeal" target="_blank" id="js-footer-appeal">账号申诉</a></li>
+                        <li><a href="http://ikefu.baidu.com/web/zhishisousuo#" log="module:common,action:click,area:footer_consult" target="_blank">智能咨询</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-new">
+            <p class="jt1128">
+                京ICP证030173号-1&nbsp;&nbsp;&nbsp;京网文【2013】0934-983号&nbsp;&nbsp;&nbsp;&nbsp; &copy;2017Baidu&nbsp;&nbsp;<a rel="nofollow" href="http://www.baidu.com/duty/" target="_blank">使用百度前必读</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a rel="nofollow" href="http://help.baidu.com/question?prod_en=zhidao&class=597&id=1001104" target="_blank">知道协议</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a rel="nofollow" href="/special/view/cooperation" target="_blank">百度知道品牌合作</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
