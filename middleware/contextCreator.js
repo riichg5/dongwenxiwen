@@ -28,15 +28,12 @@ function context(defaults) {
             Object.keys(defaults).forEach(function (key) {
                 request.context[key] = defaults[key];
             });
-            // request.context.remoteAddress = _utils.getClientIp(request);
-            request.context.clientId = request.get('x-client-id');
-            request.context.companyCode = 'CUIT'; //request.get('x-company-code');
+            request.context.appName = "DWXW";
             request.context.session = request.session;
             request.context.data = {};
         }
         request.context.requestTime = new Date();
         next();
-        // _utils.startContext(request.context, next);
     };
 }
 

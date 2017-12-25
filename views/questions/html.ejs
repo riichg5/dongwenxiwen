@@ -6,86 +6,19 @@
     <meta http-equiv="content-type" content="text/html;charset=gbk" />
     <title><%= title %></title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <meta name="keywords" content="双一,翻版" />
-    <meta name="description" content="“双一流”是&amp;quot;211&amp;quot;&amp;quot;985&amp;quot;的翻版吗？大同小异呗，每次出这玩意，赶脚就变着花样编新词" />
-    <link rel="stylesheet" type="text/css" href="/css/common.1a9a8c1.css" />
-    <link rel="stylesheet" type="text/css" href="/css/aio.c7021ee.css" />
-    <link rel="stylesheet" type="text/css" href="/css/top-nav-bar.d434cb6.css" />
+    <meta name="keywords" content="<%=short_name%>" />
+    <meta name="description" content="<%=title%>" />
+    <link rel="stylesheet" type="text/css" href="/css/common.1.css" />
+    <link rel="stylesheet" type="text/css" href="/css/aio.c.css" />
+    <link rel="stylesheet" type="text/css" href="/css/top-nav-bar.d.css" />
 </head>
 
 <body class="layout-center has-menu">
-    <div class="head-wrap">
-        <hr class="divider">
-        <header id="header" class="container">
-            <div id="search-box" class="search-box-new line">
-                <div class="search-block clearfix">
-                    <div class="search-cont clearfix">
-                        <a class="logo" href="/" title="百度知道"></a>
-                        <form action="/search" name="search-form" method="get" id="search-form-new" class="search-form">
-                            <input class="hdi" id="kw" maxlength="256" tabindex="1" size="46" name="word" value="" autocomplete="off" />
-                            <button alog-action="g-search-anwser" type="submit" id="search-btn" hidefocus="true" tabindex="2" class="btn-global">搜索答案</button>
-                            <a href="#" alog-action="g-i-ask" class="i-ask-link" id="ask-btn-new">我要提问</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </header>
-    </div>
-    <div class="nav-menu-container" id="j-nav-menu-container">
-        <div class="nav-show-control">
-            <div class="nav-menu-layout">
-                <div class="nav-menu line">
-                    <div class="nav-menu-content container">
-                        <div class="content-box">
-                            <div class="menu-item menu-item-index">
-                                <a class="menu-title " href="/">首页</a>
-                            </div>
-                            <div class="menu-item-box">
-                                <div class="menu-item menu-item-cat">
-                                    <a class="menu-title " href="/list?fr=daohang" target="_blank">问题</a>
-                                    <div class="menu-content"></div>
-                                </div>
-                                <div class="menu-item menu-item-lanmu">
-                                    <a class="menu-title" href="javascript:;">精选<i class="menu-new"></i></a>
-                                    <div class="menu-content"></div>
-                                </div>
-                                <div class="menu-item menu-item-user">
-                                    <a class="menu-title" href="javascript:;">用户</a>
-                                    <div class="menu-content"></div>
-                                </div>
-                                <div class="menu-item menu-item-expert">
-                                    <a class="menu-title" href="javascript:;">特色</a>
-                                    <div class="menu-content"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%-include('../head', {})%>
+    <%-include('../navigate', {})%>
 
     <div id="body" class="container">
         <div class="layout-wrap">
-            <div id="top-nav-bar" class="top-nav-bar">
-                <div class="container2">
-                    <a class="toplogo" href="http://zhidao.baidu.com" title="百度知道"></a>
-                    <div class="topsearch">
-                        <form action="/search" name="search-nav-form" id="search-nav-form" method="get">
-                            <input class="hdi" id="nav-kw" maxlength="256" tabindex="1" size="46" name="word" value="" autocomplete="off" />
-                            <button alog-action="g-search-anwser" type="submit" id="search-btn-nav" hidefocus="true" tabindex="2" class="i-search-link">搜索答案</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div style="display:none">
-                <nav class="wgt-nav f-12" alog-group="qb-cate-nav">
-                    <a href="/">百度知道</a> &gt;
-                    <a href="/browse/83">教育/科学</a> &gt;
-                    <a href="/browse/192">院校信息</a>
-                </nav>
-            </div>
-
             <section class="line qb-section">
                 <article class="grid qb-content" id="qb-content">
                     <div class="wgt-ask accuse-response line mod-shadow " id="wgt-ask">
@@ -93,15 +26,10 @@
                             <i class="iknow-qb_home_icons i-status-being grid mr-10"></i>
                             <span class="ask-title "><%=title %></span>
                         </h1>
-                        <div class="line f-aid ask-info ff-arial" id="ask-info">
-                            <span class="grid-r ask-time">
-                                <ins class="share-area"></ins>
-                            </span>
-                            <!-- <a class="" alog-action="qb-ask-uname" rel="nofollow" href="/usercenter?uid=f4564069236f25705e791512" target="_blank"><%= bestAnswer.nickName %></a> -->
-                            <!-- <span id="v-times" class="f-pipe" style="display: none"></span> -->
-                            <!-- <span class="f-pipe"></span> -->
+                        <div class="line f-aid ask-info">
+                            <span>相关商品 > <%=product_name %></span>
+                            <span class="f-pipe">|</span>
                             <span>发布于<%= created_at %></span>
-                            <ins class="accuse-area"></ins>
                         </div>
                     </div>
                     <div class="wgt-best mod-shadow  " id="best-answer-2824429761">
@@ -189,9 +117,9 @@
                         <div class="cms-inner">
                             <p class="cms-link-title">商品信息</p>
                             <a rel="nofollow" href="https://item.jd.com/<%= product_id %>.html" target="_blank">
-                                <img src="<%= img_path %>" style="display: block; margin-left: 70px;">
+                                <img src="<%= img_path %>" style="display: block; margin-left: 30px;">
                             </a>
-                            <a class="btn-l-green" href="https://item.jd.com/<%= product_id %>.html" style="margin-top: 10px; margin-bottom: 10px; margin-left: 70px;">前往京东</a>
+                            <a class="btn-l-green" href="https://item.jd.com/<%= product_id %>.html" style="margin-top: 10px; margin-bottom: 10px; margin-left: 65px;">前往京东</a>
                         </div>
                     </div>
                     <div class="qbside-top-line"></div>
@@ -228,45 +156,6 @@
             </div>
         </div>
     </div>
-    <div class="wgt-footer-new">
-        <div class="footer-wp">
-            <ul class="footer-list clearfix">
-                <li class="footer-list-item footer-list-guide">
-                    <div class="footer-title"><span class="icon-guide"></span>新手帮助</div>
-                    <ul class="footer-link clearfix">
-                        <li><a href="http://help.baidu.com/question?prod_en=zhidao&class=241&id=1521" target="_blank">如何答题</a></li>
-                        <li><a href="http://help.baidu.com/question?prod_id=9&class=531" target="_blank">获取采纳</a></li>
-                        <li><a href="http://help.baidu.com/question?prod_en=zhidao&class=531" target="_blank">使用财富值</a></li>
-                    </ul>
-                </li>
-                <li class="footer-list-item footer-list-intro">
-                    <div class="footer-title"><span class="icon-intro"></span>玩法介绍</div>
-                    <ul class="footer-link clearfix">
-                        <li><a href="/shop" target="_blank">知道商城</a></li>
-                        <li><a href="http://zhidao.baidu.com/pcs/zhimatuan/index.html" target="_blank">知道团队</a></li>
-                        <li><a href="/hangjia" target="_blank">行家认证</a></li>
-                        <li><a href="http://zhidao.baidu.com/s/hi-quality/index.html" target="_blank">高质量问答</a></li>
-                    </ul>
-                </li>
-                <li class="footer-list-item footer-list-sug">
-                    <div class="user-tip" id="js-footer-user-tip" style="display: none;">
-                        <p class="title">您的帐号状态正常</p>
-                        <p class="desc">感谢您对我们的支持</p>
-                    </div>
-                    <div class="footer-title"><span class="icon-sug"></span>投诉建议</div>
-                    <ul class="footer-link clearfix">
-                        <li><a href="/misc/feedback" log="module:common,action:click,area:footer_feedback" target="_blank">意见反馈</a></li>
-                        <li><a href="/misc/appeal" log="module:common,action:click,area:footer_appeal" target="_blank" id="js-footer-appeal">账号申诉</a></li>
-                        <li><a href="http://ikefu.baidu.com/web/zhishisousuo#" log="module:common,action:click,area:footer_consult" target="_blank">智能咨询</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="footer-new">
-            <p class="jt1128">
-                京ICP证030173号-1&nbsp;&nbsp;&nbsp;京网文【2013】0934-983号&nbsp;&nbsp;&nbsp;&nbsp; &copy;2017Baidu&nbsp;&nbsp;<a rel="nofollow" href="http://www.baidu.com/duty/" target="_blank">使用百度前必读</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a rel="nofollow" href="http://help.baidu.com/question?prod_en=zhidao&class=597&id=1001104" target="_blank">知道协议</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a rel="nofollow" href="/special/view/cooperation" target="_blank">百度知道品牌合作</a>
-            </p>
-        </div>
-    </div>
+    <%-include("../footer", {})%>
 </body>
 </html>

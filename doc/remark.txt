@@ -8,4 +8,43 @@
 https://club.jd.com/allconsultations/4207778-1-1.html
 
 
-3.
+3.社区问题接口
+https://question.jd.com/question/getAnswerListById.action?page=1&questionId=5106572
+
+
+首先第一步,根据产品id，拿相关的问题
+https://question.jd.com/question/getQuestionAnswerList.action?page=1&productId=4207778
+
+在skuInfo里面，可以拿到：
+{
+	id: 4207778,
+	brandId: 8557,
+	brandName: "华为",
+	fullName: "华为 畅享6S 银色 移动联通电信4G手机 双卡双待",
+	shortName: "华为畅享6S",														//这个对应我们系统的product name
+	imgUrl: "jfs/t3946/339/437674630/314776/9b8fd23d/584f58b2N8586b10b.jpg",
+	venderId: 1000004259,
+	firstCategory: "9987",
+	secondCategory: "653",
+	thirdCategory: "655",
+	firstCategoryName: "手机",
+	secondCategoryName: "手机通讯",
+	thirdCategoryName: "手机",													//这个对应我们系统的category
+	cacheTime: 1512290605962
+}
+
+其中图片API：
+http://img1.360buyimg.com/n1/s450x450_jfs/t3946/339/437674630/314776/9b8fd23d/584f58b2N8586b10b.jpg
+http://img1.360buyimg.com/n1/s450x450里面的450x450，可以自定义大小，很安逸
+
+
+第二步：拿问题
+在上一步接口里面会返回questionList属性。
+怎么拿分页：
+https://question.jd.com/question/getAnswerListById.action?page=1&questionId=5106572
+
+
+
+
+
+

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="content-type" content="text/html;charset=gbk" />
+    <title>
+        问题分类
+    </title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="keywords" content="双一,翻版" />
+    <meta name="description" content="“双一流”是&amp;quot;211&amp;quot;&amp;quot;985&amp;quot;的翻版吗？大同小异呗，每次出这玩意，赶脚就变着花样编新词" />
+    <link rel="stylesheet" type="text/css" href="/css/common.2.css" />
+    <link rel="stylesheet" type="text/css" href="/css/module.7.css" />
+</head>
+
+<body class="layout-center has-menu">
+    <%-include('head', {})%>
+    <%-include('navigate', {})%>
+    <div id="body" class="container">
+        <%if(category && category.name) {%>
+        <section class="crumbs-widget-wp container">
+            <div class="crumbs-list-wgt">
+                <ul class="crumbs-list">
+                    <li class="crumbs-item">
+                        <a class="crumbs-name" href="/list">全部问题</a>
+                    </li>
+                    <li class="crumbs-item">
+                        <span class="crumbs-direction"></span>
+                        <a class="crumbs-name" href="/list?category=<%=category.name%>"><%=category.name%></a>
+                    </li>
+                </ul>
+                <p class="question-count">
+                    <!-- 共<span class="count-num">760</span>个问题 -->
+                </p>
+            </div>
+        </section>
+        <%} else {%>
+        <section class="crumbs-widget-wp container">
+            <div class="crumbs-list-wgt">
+                <ul class="crumbs-list">
+                    <li class="crumbs-item last-crumbs-item">
+                        <span class="cur-crumbs last-crumbs">
+                        <span class="crumbs-border"></span>
+                        <a class="crumbs-name" href="/list">全部问题</a>
+                        <span class="crumbs-border"></span>
+                        <span class="cur-crumbs-cover"></span>
+                        </span>
+                    </li>
+                </ul>
+                <p class="question-count">
+                    <!-- 共<span class="count-num">760</span>个问题 -->
+                </p>
+            </div>
+        </section>
+        <section class="tag-all-view-widget-wp container">
+            <div class="tag-view-list-wgt level-0">
+                <div class="tag-view-list-layout">
+                    <ul class="tag-view-list">
+                        <%for(let row of categories) {%>
+                            <li class="view-list-item">
+                                <div class="tag-content">
+                                    <p class="tag-name">
+                                        <a href="/list?category=<%=row.name%>" class="tag-name-link">
+                                            <%=row.name%>
+                                        </a>
+                                    </p>
+                                </div>
+                            </li>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <%}%>
+        <section class="interest-widget-wp container">&nbsp;</section>
+        <section class="list-section-widget-wp container">
+            <div class="question-list-wgt">
+                <div id="j-question-list-pjax-container">
+                    <div class="question-list-content">
+                        <ul class="question-list-ul">
+                            <%for(let row of rows) {%>
+                                <li class="question-list-item" data-qid="396712272954845165" data-cid="111">
+                                    <div class="question-title-section">
+                                        <div class="question-title">
+                                            <a href="<%=HOME_URL%>questions/<%=row.id%>.html" class="title-link" target="_blank">
+                                                <%= row.title%>
+                                            </a>
+                                        </div>
+                                        <div class="question-tags">
+                                            <span class="tag-logo"></span>
+                                            <a class="tag-item" target="_blank" href="/list?tag=%CD%F8%C2%E7%D3%CE%CF%B7">
+                                                <%= row.category_name%>
+                                            </a>
+                                        </div>
+                                        <div class="question-info">
+                                            <div class="answer-num">
+                                                <%= row.reply_count%> 回答
+                                            </div>
+                                            <div class="question-time">
+                                                <%= row.created_at %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <%}%>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pager question-list-pager">
+                    <%-pagerHtml%>
+<!--                     <a href="javascript:;" class="pTag prev disabled">上一页</a>
+                    <a href="javascript:;" class="pTag cur">1</a><a href="javascript:;" class="pTag" pagerindex="2">2</a>
+                    <a href="javascript:;" class="pTag" pagerindex="3">3</a>
+                    <a href="javascript:;" class="pTag" pagerindex="4">4</a>
+                    <a href="javascript:;" class="pTag" pagerindex="5">5</a>
+                    <a href="javascript:;" class="pTag" pagerindex="6">6</a>
+                    <a href="javascript:;" class="pTag" pagerindex="7">7</a>
+                    <a href="javascript:;" class="pTag" pagerindex="8">8</a>
+                    <a href="javascript:;" class="pTag" pagerindex="9">9</a><span class="ellipsis">...</span>
+                    <a href="javascript:;" class="pTag" pagerindex="26">26</a>
+                    <a href="javascript:;" class="pTag next" pagerindex="2">下一页</a> -->
+                </div>
+            </div>
+        </section>
+    </div>
+    <%-include("footer", {})%>
+</body>
+
+</html>

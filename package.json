@@ -48,7 +48,7 @@
     "raw-body": "^2.1.7",
     "redis": "~0.8.4",
     "request": "^2.79.0",
-    "request-promise": "^4.1.1",
+    "request-promise": "^4.2.2",
     "safe-json-stringify": "^1.0.3",
     "sequelize": "^3.23.4",
     "shortid": "^2.2.6",

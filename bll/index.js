@@ -7,19 +7,19 @@ function createBll(name, context) {
     // if(!context){
     //     context = _getContext();
     // }
-    var companyCode = context.companyCode;
+    var appName = context.appName;
     assert(name && name.length > 0, 'name must be a non-empty string.');
     assert(typeof context === 'object', 'context must be a valid object.');
 
-    companyCode = companyCode.toLowerCase();
+    appName = appName.toLowerCase();
     if (context.bll && context.bll[name]) {
         return context.bll[name];
     }
 
     if (exports[name]) {
         var bll = null;
-        var companyCodePath = path.join(__dirname,`${companyCode}/${name}.js`);
-        if(companyCode && fs.existsSync(companyCodePath)) {
+        var companyCodePath = path.join(__dirname,`${appName}/${name}.js`);
+        if(appName && fs.existsSync(companyCodePath)) {
             delete exports[name];
             exports.__defineGetter__(name, function () {
                 return require(companyCodePath);

@@ -1,5 +1,6 @@
 {
     "appName": "东问西问",
+    "homeUrl": "http://localhost:3001/",
     "log": {
         "level": "trace"
     },

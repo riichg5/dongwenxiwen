@@ -4,21 +4,19 @@ let url = require('url');
 class Handler extends Base {
     static getParams (request) {
         let context = request.context;
-        let params = request.params;
-        let id = params[0];
-
-        if(!/\d/.test(id)) {
-            _reject("迷路了", 404, {});
-        }
+        let query = request.query;
+        let page = parseInt(query.page, 10);
 
         return _resolve({
-            id: parseInt(id, 10)
+            category:  query.category,
+            page: isNaN(page) || !page ? 1 : page
         });
     }
 
     static validateParams (request) {
         var errors = request.validationErrors();
 
+        request.checkQuery('category', '参数错误').optional().len(1, 128);
         if (errors) {
             return _reject("系统错误", 500, {});
         }
@@ -34,14 +32,17 @@ class Handler extends Base {
             await self.validateParams(request);
             let params = await self.getParams(request);
             let bAsk = self.BLL.createAsk(context);
-            // let info = await bAsk.getAskPageInfo({id: params.id});
-            let info = await bAsk.getAskPageInfoFromJD({id: params.id});
+            let listInfo = await bAsk.getListInfo({
+                category: params.category,
+                page: params.page
+            });
 
-            if(!info) {
-                _reject("迷路了", 404, {});
-            }
-
-            response.status(200).render('questions/html', info);
+            listInfo.category = {
+                name: params.category
+            };
+            listInfo.pageInfo = [
+            ];
+            response.status(200).render('list', listInfo);
         } catch (error) {
             next(error);
         }
