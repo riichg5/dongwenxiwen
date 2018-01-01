@@ -7,10 +7,10 @@
     <title><%= title %></title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <meta name="keywords" content="<%=short_name%>" />
-    <meta name="description" content="<%=title%>" />
     <link rel="stylesheet" type="text/css" href="/css/common.1.css" />
     <link rel="stylesheet" type="text/css" href="/css/aio.c.css" />
     <link rel="stylesheet" type="text/css" href="/css/top-nav-bar.d.css" />
+    <link rel="stylesheet" type="text/css" href="/css/myask.css" />
 </head>
 
 <body class="layout-center has-menu">
@@ -27,9 +27,8 @@
                             <span class="ask-title "><%=title %></span>
                         </h1>
                         <div class="line f-aid ask-info">
-                            <span>相关商品 > <%=product_name %></span>
-                            <span class="f-pipe">|</span>
-                            <span>发布于<%= created_at %></span>
+                            <span>相关商品 > </span>
+                            <span class="productName"><%=product_name %></span>
                         </div>
                     </div>
                     <div class="wgt-best mod-shadow  " id="best-answer-2824429761">
@@ -39,11 +38,11 @@
                             <span class="iknow-qb_home_icons answer-type answer-best grid"></span>
                             <span class="answer-title h2 grid">最佳答案</span>
                         </div>
-                        <div class="bd answer" id="answer-2824429761">
+                        <div class="bd answer" id="answer">
                             <div class="line info f-aid">
                             </div>
                             <div class="line content">
-                                <div id="best-content-2824429761" accuse="aContent" class="best-text mb-10" style="min-height: 55px;">
+                                <div id="best-content" accuse="aContent" class="best-text mb-10" style="min-height: 55px;">
                                     <p>
                                         <%= bestAnswer ? bestAnswer.content : ''%>
                                     </p>
@@ -62,7 +61,7 @@
                                 <div class="bd answer answer-first answer-last answer-fold">
                                     <div class="line">
                                         <div class="line content">
-                                            <div id="answer-content-2824429879" accuse="aContent" class="answer-text line">
+                                            <div id="answer-content" accuse="aContent" class="answer-text line">
                                                 <span class="con">
     												<%= item.content %>
     											</span>
@@ -83,30 +82,15 @@
                     <div class="wgt-push mod-shadow last ">
                         <h2 class="hd line"><i class="iknow-qb_home_icons"></i><%= product_name %>的其他问题：</h2>
                         <ul alog-group="qb-push-que" class="bd list-34 line push-ul">
-                            <li>
-                                <span class="grid-r f-aid ff-arial">2回答</span>
-                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/204639791655102605.html?push=&group=0&qbl=push_question_0&rpRecommand=c&entry=qb_qb_view" target="_blank">汉朝的领土到底包不包括岭南？</a>
-                            </li>
-                            <li>
-                                <span class="grid-r f-aid ff-arial">13回答</span>
-                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/1707717304402421780.html?push=&group=0&qbl=push_question_1&rpRecommand=c&entry=qb_qb_view" target="_blank">想要出国，但家里没有足够的钱，我该怎么办？</a>
-                            </li>
-                            <li>
-                                <span class="grid-r f-aid ff-arial">13回答</span>
-                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/942130453048614772.html?push=&group=0&qbl=push_question_2&rpRecommand=c&entry=qb_qb_view" target="_blank">关于被小三这件事，你们怎么看？</a>
-                            </li>
-                            <li>
-                                <span class="grid-r f-aid ff-arial">11回答</span>
-                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/923957485998725779.html?push=&group=0&qbl=push_question_3&rpRecommand=c&entry=qb_qb_view" target="_blank">中国有哪些不能乱闯的旅游禁区？说说你知道的</a>
-                            </li>
-                            <li>
-                                <span class="grid-r f-aid ff-arial">3回答</span>
-                                <a class="media-980" log="pms:newqb,pos:pushlist,page:qb-new" href="/question/1673801713416306307.html?push=&group=0&qbl=push_question_4&rpRecommand=c&entry=qb_qb_view" target="_blank">美国独霸天下，是从二战结束后就开始了，还是苏联解体后才开...</a>
-                            </li>
+                            <%
+                                for(let question of otherQuestions) {
+                            %>
+                                <li>
+                                    <span class="grid-r f-aid ff-arial"><%=question.replyCount%>回答</span>
+                                    <a class="media" title="<%=question.title%>" href="/questions/<%=question.id%>.html" target="_blank"><%=question.subTitle%></a>
+                                </li>
+                            <% } %>
                         </ul>
-                        <div class="ft line more-push clearfix">
-                            <a alog-action="qb-push-more" log="pms:newqb,pos:pushlist,page:question" target="_blank" rel="nofollow" href="/browse/?qbl=push_question_more">更多等待您来回答的问题<span class="ff-arial">&nbsp;&gt;</span></a>
-                        </div>
                     </div>
                 </article>
 
@@ -123,31 +107,16 @@
                         </div>
                     </div>
                     <div class="qbside-top-line"></div>
-                    <div class="wgt-nologin-daily" id="wgt-nologin-daily">
-                        <div class="wgt-daily mod-shadow">
-                            <div class="daily-line mb-10 pt-10">
-                                <h3 class="grid">知道日报</h3>
-                                <span class="grid"></span>
-                                <a href="http://zhidao.baidu.com/daily/square/" target="_blank" alog-action="qb-daily-review" class="grid-r f-aid f-yahei">全部文章</a>
-                            </div>
-                            <div id="daily-carousel"></div>
-                            <div class="wgt-daily-wall"><em></em>
-                                <s></s>
-                            </div>
-                        </div>
-                        <div class="qbside-top-line"></div>
-                    </div>
 
                     <div class="cms-slide mod-noshadow">
                         <div class="cms-inner">
-                            <p class="cms-link-title">精彩知识在知道</p>
+                            <p class="cms-link-title"></p>
                             <ul class="pb-5 mt-5" id="cms-link">
-                                <li><a alog-action="qb-inner-link" href="https://zhidao.baidu.com/culture/index?fr=daohang" target="_blank">快看，旮旯里有什么！</a></li>
-                                <li><a alog-action="qb-inner-link" href="http://zhidao.baidu.com/bigdata/list" target="_blank">知道大数据，用数据解读生活点滴</a></li>
-                                <li><a alog-action="qb-inner-link" href="https://zhidao.baidu.com/liuyan" target="_blank">【真相问答机】，揭穿流言！</a></li>
+                                <li><a alog-action="qb-inner-link" href="http://www.360zhijia.com" target="_blank">360之家</a></li>
                             </ul>
                         </div>
                     </div>
+
                 </aside>
             </section>
 

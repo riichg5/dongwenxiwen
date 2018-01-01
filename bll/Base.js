@@ -24,6 +24,8 @@ class Base {
 		});
 	}
 
+
+
 	getById(id) {
 		return this.dal.getById(id);
 	}

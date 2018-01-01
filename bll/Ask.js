@@ -26,11 +26,18 @@ class Ask extends Base {
 		let id = opts.id;
 
 		let ask = await self.dal.getAskInfo({id: id});
+		let [content, otherQuestions] = await Promise.all([
+			self.getAnswersFromJD({
+				questionId: ask.question_id
+			}),
+			self.getProductOtherQuestions({
+				productId: ask.product_id,
+				questionId: ask.question_id
+			})
+		]);
 
-		ask.content = await self.getAnswersFromJD({
-			questionId: ask.question_id
-		});
-
+		ask.content = content;
+		ask.otherQuestions = otherQuestions;
 		// ask.skuInfo = info.skuInfo;
 
 		if(!ask.content) {
@@ -123,6 +130,7 @@ class Ask extends Base {
 	}
 
 	getPageNumberInfos (opts) {
+		let self = this;
 		let currentPage = opts.currentPage;
 		let maxPage = opts.maxPage;
 		let btnAmount = opts.btnAmount;//要显示多少个页码按钮
@@ -139,13 +147,14 @@ class Ask extends Base {
 		}
 
 		let startPrev = currentPage;
-		while(startPrev > 0) {
+		while(startPrev > 0 && prevAmount > 0) {
 			resPageNumbers.push(startPrev);
 			prevAmount -= 1;
 			startPrev -= 1;
 		}
+		_.reverse(resPageNumbers);
 
-		lastAmount = startPrev + lastAmount; //前面剩下的，放到后面来
+		lastAmount = lastAmount; //前面剩下的，放到后面来
 		let startLastPage = currentPage + 1;
 
 		while(startLastPage <= maxPage && lastAmount >= 1) {
@@ -188,6 +197,16 @@ class Ask extends Base {
 			html.push(`<a href="${prevUrl}" class="pTag prev" pagerindex="${currentPage - 1}">上一页</a>`);
 		}
 
+		if(pages[0] > 1) {
+			let firstUrl = self.getPageUrl({
+				page: 1,
+				keyWord: keyWord,
+				category: category
+			});
+			html.push(`<a href="${firstUrl}" class="pTag" pagerindex="1">1</a>`);
+			html.push(`<span class="ellipsis">...</span>`);
+		}
+
 		let biggerPage;
 		for(let page of pages) {
 			let url = self.getPageUrl({
@@ -226,6 +245,35 @@ class Ask extends Base {
 		}
 
 		return html.join('');
+	}
+
+	async getProductOtherQuestions (opts) {
+		let self = this, context = self.context;
+		let productId = opts.productId;
+		let questionId = opts.questionId;
+
+		let others = await self.dal.findAll({
+			attributes: ['replyCount', 'title', 'questionId', 'productId', 'id'],
+			where: {
+				productId: productId,
+				questionId: {
+					lt: questionId
+				}
+			},
+			order: [['id', 'DESC']],
+			limit: 5,
+			raw: true
+		});
+
+		for(let item of others) {
+			if(item.title && item.title.length > 40) {
+				item.subTitle = `${item.title.substring(0, 40)}...`;
+			} else {
+				item.subTitle = item.title;
+			}
+		}
+
+		return others;
 	}
 
 	async getListInfo (opts) {
