@@ -7,7 +7,7 @@ var namespace = cls.createNamespace('my-very-own-namespace');
 var Promise = require('bluebird');
 var clsBluebird = require('cls-bluebird');
 clsBluebird(namespace);
-var types = require('pg').types;
+// var types = require('pg').types;
 
 /**
  * Cache of global instances of Sequelize and their models
@@ -42,15 +42,15 @@ function sequelize(request, response, next) {
     next(null);
 }
 
-function convertType() {
-    let integerParser = function(val) {
-        return parseInt(val, 10);
-    };
+// function convertType() {
+//     let integerParser = function(val) {
+//         return parseInt(val, 10);
+//     };
 
-    types.setTypeParser(20, integerParser); // int8 /bigint 测试我们的应用场景 int够用
-    types.setTypeParser(1021, parseFloat); // _float4
-    types.setTypeParser(1700, parseFloat); // decimal
-}
+//     types.setTypeParser(20, integerParser); // int8 /bigint 测试我们的应用场景 int够用
+//     types.setTypeParser(1021, parseFloat); // _float4
+//     types.setTypeParser(1700, parseFloat); // decimal
+// }
 
 /**
  * Create  global Sequelize instances and import all predefined models.
@@ -126,7 +126,7 @@ function sequelizer(modelsDirectory, config) {
         });
     }
 
-    convertType();
+    // convertType();
     return sequelize;
 }
 
