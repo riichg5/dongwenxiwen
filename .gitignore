@@ -5,6 +5,9 @@ build/
 config.json
 pm2_config.json
 shipitfile.js
+config/default.json
+config/production.json
+config/test.json
 
 
 
