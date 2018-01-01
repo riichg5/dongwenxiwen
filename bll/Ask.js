@@ -260,10 +260,26 @@ class Ask extends Base {
 					lt: questionId
 				}
 			},
-			order: [['id', 'DESC']],
+			order: [['id', 'desc']],
 			limit: 5,
 			raw: true
 		});
+
+		if(others.length < 5) {
+			let limit = 5 - others.length;
+			let rows = await self.dal.findAll({
+				attributes: ['replyCount', 'title', 'questionId', 'productId', 'id'],
+				where: {
+					productId: productId,
+					questionId: {
+						gt: questionId
+					}
+				},
+				order: [['id', 'ASC']],
+				limit: limit,
+				raw: true
+			});
+		}
 
 		for(let item of others) {
 			if(item.title && item.title.length > 40) {
