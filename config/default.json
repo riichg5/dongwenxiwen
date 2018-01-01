@@ -1,0 +1,46 @@
+{
+    "appName": "东问西问",
+    "homeUrl": "http://localhost:3001/",
+    "log": {
+        "level": "trace"
+    },
+    "port" : 3001,
+    "connection" : {
+        "timeout" : 600000
+    },
+    "databases" : {
+        "default" : {
+            "protocol" : "tcp",
+            "host" : "127.0.0.1",
+            "port" : 3306,
+            "username" : "root",
+            "password" : "123",
+            "name" : "dwxw",
+            "pool" : {
+                "min" : 1,
+                "max" : 50
+            },
+            "sequelize" : {
+                "dialect" : "mysql",
+                "omitNull" : false,
+                "maxConcurrentQueries" : 100,
+                "pool" : {
+                    "maxConnection" : 50,
+                    "max" : 50
+                },
+                "define" : {
+                    "syncOnAssociation" : false,
+                    "underscored" : true
+                }
+            }
+        }
+    },
+    "redis" : {
+        "host" : "localhost",
+        "port" : 6379,
+        "password" : "",
+        "options" : {
+            "parser" : "javascript"
+        }
+    }
+}
