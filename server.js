@@ -25,7 +25,6 @@ let getRawBody = require('raw-body');
 let typer = require('media-typer');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
-let oauthserver = require('oauth2-server');
 let DAL = require('./dal');
 let middleware, handlers, app;
 
